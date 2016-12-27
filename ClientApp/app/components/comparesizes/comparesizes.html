@@ -19,10 +19,9 @@
                     <td>
                         <input type="checkbox"
                                checked.bind="size.selected"
-                               change.delegate="$parent.sizeSelected(size)"
-                               />
+                               change.delegate="$parent.sizeSelected(size)" />
                     </td>
-                	<td>${ size.areaName }</td>
+                	<td style="color: ${size.color}">${ size.areaName }</td>
                 	<td>${ size.area }</td>
 		        </template>
             </tr>
@@ -33,7 +32,8 @@
                 cx.bind="300" cy.bind="300" 
                 r.bind="size.drawnArea"
 			    stroke="blue"
-                style="fill: red">
+                style="fill: ${size.color}"
+                textContent.bind="size.areaName" >
         </circle>
       </svg>
 </template>

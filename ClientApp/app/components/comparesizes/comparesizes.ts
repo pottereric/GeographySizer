@@ -14,31 +14,31 @@ export class CompareSizes {
 
     constructor(http: HttpClient, signaler) {
         this.allSizes = [
-            new SizeData("Europe", 3837000, 5),
-            new SizeData("Australia", 2968000, 5),
-            new SizeData("Alaska", 571951, 3),
-            new SizeData("Philippines", 300000, 4),
-            new SizeData("Ecuador", 283560, 4),
-            new SizeData("Burkina Faso", 274200, 4),
-            new SizeData("New Zealand", 269190, 4),
-            new SizeData("Gabon", 267667, 4),
-            new SizeData("Texas", 261797, 3),
-            new SizeData("Guinea", 245857, 4),
-            new SizeData("United Kingdom",	243610, 4),
-            new SizeData("Uganda", 241550, 4),
-            new SizeData("Ghana", 238540, 4),
-            new SizeData("Romania", 238391, 4),
-            new SizeData("Laos", 236800, 4),
-            new SizeData("Guyana", 214970, 4),
-            new SizeData("Belarus", 207600, 4),
-            new SizeData("California", 155959, 3),
-            new SizeData("Montana", 145552, 3),
-            new SizeData("New Mexico", 121356, 3),
-            new SizeData("Arizona", 113635, 3),
-            new SizeData("Nevada", 109826, 3),
-            new SizeData("Colorado", 103718, 3),
+            new SizeData("Europe", 3837000, 5, "#00f"),
+            new SizeData("Australia", 2968000, 5, "#00f"),
+            new SizeData("Alaska", 571951, 3, "#f00"),
+            new SizeData("Philippines", 300000, 4, "#0f0"),
+            new SizeData("Ecuador", 283560, 4, "#0f0"),
+            new SizeData("Burkina Faso", 274200, 4, "#0f0"),
+            new SizeData("New Zealand", 269190, 4, "#0f0"),
+            new SizeData("Gabon", 267667, 4, "#0f0"),
+            new SizeData("Texas", 261797, 3, "#f00"),
+            new SizeData("Guinea", 245857, 4, "#0f0"),
+            new SizeData("United Kingdom",	243610, 4, "#0f0"),
+            new SizeData("Uganda", 241550, 4, "#0f0"),
+            new SizeData("Ghana", 238540, 4, "#0f0"),
+            new SizeData("Romania", 238391, 4, "#0f0"),
+            new SizeData("Laos", 236800, 4, "#0f0"),
+            new SizeData("Guyana", 214970, 4, "#0f0"),
+            new SizeData("Belarus", 207600, 4, "#0f0"),
+            new SizeData("California", 155959, 3, "#f00"),
+            new SizeData("Montana", 145552, 3, "#f00"),
+            new SizeData("New Mexico", 121356, 3, "#f00"),
+            new SizeData("Arizona", 113635, 3, "#f00"),
+            new SizeData("Nevada", 109826, 3, "#f00"),
+            new SizeData("Colorado", 103718, 3, "#f00"),
         ];
-
+        var colors = ["#f00", "#0f0", "#00f"];
 	    this.sizes = this.allSizes;
 
         this.types = [
@@ -72,10 +72,11 @@ class PlaceType {
 }
 
 class SizeData {
-    constructor(public areaName: string, public area: number, public areaType: number) {
+    constructor(public areaName: string, public area: number, public areaType: number, public color: string) {
         this.shouldShow = true;
         this.selected = false;
         this.drawnArea = 0;
+
     }
 
     public shouldShow: boolean;
