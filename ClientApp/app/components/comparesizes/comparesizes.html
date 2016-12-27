@@ -32,7 +32,12 @@
             </tr>
         </tbody>
     </table>
-    <svg xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="50" fill="red" />
-    </svg>
+    <svg width="800" height="500" >
+    	<circle repeat.for="size of sizes" 
+                cx.bind="300" cy.bind="300" 
+                r.bind="size.drawnArea"
+			    stroke="blue"
+                style="fill: red">
+        </circle>
+      </svg>
 </template>

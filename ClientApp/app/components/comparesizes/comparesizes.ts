@@ -14,11 +14,11 @@ export class CompareSizes {
 
     constructor(http: HttpClient, signaler) {
         this.allSizes = [
-            new SizeData("Leo", 10, 1),
-            new SizeData("Huntertown", 20, 1),
-            new SizeData("Fort Wayne", 40, 1),
-            new SizeData("Allen County", 80, 2),
             new SizeData("Indiana", 160, 3),
+            new SizeData("Allen County", 80, 2),
+            new SizeData("Fort Wayne", 40, 1),
+            new SizeData("Huntertown", 20, 1),
+            new SizeData("Leo", 10, 1),
 	    ];
 
 	    this.sizes = this.allSizes;
@@ -39,7 +39,12 @@ export class CompareSizes {
     }
 
     sizeSelected(size: SizeData) {
-        alert('display size ' + size.areaName);
+        //alert('display size ' + size.areaName);
+        if (size.selected) {
+            size.drawnArea = size.area;
+        } else {
+            size.drawnArea = 0;
+        }
     }
 }
 
@@ -51,10 +56,12 @@ class SizeData {
     constructor(public areaName: string, public area: number, public areaType: number) {
         this.shouldShow = true;
         this.selected = false;
+        this.drawnArea = 0;
     }
 
     public shouldShow: boolean;
     public selected: boolean; 
+    public drawnArea: number;
 }
 
 interface ISizeData {
