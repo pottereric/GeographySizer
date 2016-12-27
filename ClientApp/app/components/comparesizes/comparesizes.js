@@ -14,24 +14,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var aurelia_fetch_client_1 = require("aurelia-fetch-client");
 var aurelia_framework_1 = require("aurelia-framework");
 var CompareSizes = (function () {
-    function CompareSizes(http) {
-        this.sizes = [
+    function CompareSizes(http, signaler) {
+        this.allSizes = [
             new SizeData("Leo", 10, 1),
             new SizeData("Huntertown", 20, 1),
             new SizeData("Fort Wayne", 40, 1),
             new SizeData("Allen County", 80, 2),
+            new SizeData("Indiana", 160, 3),
         ];
+        this.sizes = this.allSizes;
         this.types = [
             new PlaceType("City", true, 1),
-            new PlaceType("County", false, 2),
-            new PlaceType("State", false, 3),
+            new PlaceType("County", true, 2),
+            new PlaceType("State", true, 3),
         ];
     }
+    CompareSizes.prototype.typeSelected = function (type) {
+        //alert("hit it with a change");
+    };
+    CompareSizes.prototype.shouldShowSizeData = function (place) {
+        for (var _i = 0, _a = this.types; _i < _a.length; _i++) {
+            var t = _a[_i];
+            if (t.id == place.areaType) {
+                return t.selected;
+            }
+        }
+        return false;
+    };
     return CompareSizes;
 }());
 CompareSizes = __decorate([
     aurelia_framework_1.inject(aurelia_fetch_client_1.HttpClient),
-    __metadata("design:paramtypes", [aurelia_fetch_client_1.HttpClient])
+    __metadata("design:paramtypes", [aurelia_fetch_client_1.HttpClient, Object])
 ], CompareSizes);
 exports.CompareSizes = CompareSizes;
 var PlaceType = (function () {

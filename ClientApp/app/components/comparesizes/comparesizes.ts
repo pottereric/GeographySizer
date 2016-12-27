@@ -8,23 +8,42 @@ import { inject } from "aurelia-framework";
 @inject(HttpClient)
 export class CompareSizes {
     public sizes: ISizeData[];
+    public allSizes: ISizeData[];
 
     public types: PlaceType[];
 
-    constructor(http: HttpClient) {
-        this.sizes = [
+    constructor(http: HttpClient, signaler) {
+        this.allSizes = [
             new SizeData("Leo", 10, 1),
             new SizeData("Huntertown", 20, 1),
             new SizeData("Fort Wayne", 40, 1),
             new SizeData("Allen County", 80, 2),
-        ];
+            new SizeData("Indiana", 160, 3),
+	    ];
+
+	    this.sizes = this.allSizes;
 
         this.types = [
             new PlaceType("City", true, 1),
-            new PlaceType("County", false, 2),
-            new PlaceType("State", false, 3),
+            new PlaceType("County", true, 2),
+            new PlaceType("State", true, 3),
         ]
     }
+
+    typeSelected(type: PlaceType) {
+    	//alert("hit it with a change");
+	}
+
+	shouldShowSizeData(place: SizeData){
+        for (let t of this.types) {
+            if (t.id == place.areaType) {
+                return t.selected;
+            }
+        }
+
+        return false;
+        
+	}
 }
 
 class PlaceType {

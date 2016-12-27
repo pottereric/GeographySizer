@@ -2,7 +2,9 @@
     this is my size comparison page
 
     <div repeat.for="type of types">
-        <input type="checkbox" checked.bind="type.selected" />${type.name}
+        <input type="checkbox" 
+               checked.bind="type.selected"
+               change.delegate="$parent.typeSelected(type)" />${type.name}
     </div>
 
     <table if.bind="sizes" class="table">
@@ -15,9 +17,11 @@
         </thead>
         <tbody>
             <tr repeat.for="size of sizes">
-                <td>${ size.areaName }</td>
-                <td>${ size.area }</td>
-                <td>${ size.areaType }</td>
+		        <template if.bind="shouldShowSizeData(size)">
+                	<td>${ size.areaName }</td>
+                	<td>${ size.area }</td>
+                	<td>${ size.areaType }</td>
+		        </template>
             </tr>
         </tbody>
     </table>
