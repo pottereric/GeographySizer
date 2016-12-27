@@ -31,18 +31,11 @@ export class CompareSizes {
     }
 
     typeSelected(type: PlaceType) {
-    	//alert("hit it with a change");
-	}
-
-	shouldShowSizeData(place: SizeData){
-        for (let t of this.types) {
-            if (t.id == place.areaType) {
-                return t.selected;
+        for (let size of this.sizes) {
+            if (size.areaType === type.id) {
+                size.shouldShow = type.selected;
             }
         }
-
-        return false;
-        
 	}
 }
 
@@ -51,11 +44,16 @@ class PlaceType {
 }
 
 class SizeData {
-    constructor(public areaName: string, public area: number, public areaType: number){}
+    constructor(public areaName: string, public area: number, public areaType: number) {
+        this.shouldShow = true;
+    }
+
+    public shouldShow: boolean;
 }
 
 interface ISizeData {
     areaName: string;
     area: number;
     areaType: number;
+    shouldShow: boolean;
 }
