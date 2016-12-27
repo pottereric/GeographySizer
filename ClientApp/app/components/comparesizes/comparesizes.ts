@@ -14,19 +14,39 @@ export class CompareSizes {
 
     constructor(http: HttpClient, signaler) {
         this.allSizes = [
-            new SizeData("Indiana", 160, 3),
-            new SizeData("Allen County", 80, 2),
-            new SizeData("Fort Wayne", 40, 1),
-            new SizeData("Huntertown", 20, 1),
-            new SizeData("Leo", 10, 1),
-	    ];
+            new SizeData("Europe", 3837000, 5),
+            new SizeData("Australia", 2968000, 5),
+            new SizeData("Alaska", 571951, 3),
+            new SizeData("Philippines", 300000, 4),
+            new SizeData("Ecuador", 283560, 4),
+            new SizeData("Burkina Faso", 274200, 4),
+            new SizeData("New Zealand", 269190, 4),
+            new SizeData("Gabon", 267667, 4),
+            new SizeData("Texas", 261797, 3),
+            new SizeData("Guinea", 245857, 4),
+            new SizeData("United Kingdom",	243610, 4),
+            new SizeData("Uganda", 241550, 4),
+            new SizeData("Ghana", 238540, 4),
+            new SizeData("Romania", 238391, 4),
+            new SizeData("Laos", 236800, 4),
+            new SizeData("Guyana", 214970, 4),
+            new SizeData("Belarus", 207600, 4),
+            new SizeData("California", 155959, 3),
+            new SizeData("Montana", 145552, 3),
+            new SizeData("New Mexico", 121356, 3),
+            new SizeData("Arizona", 113635, 3),
+            new SizeData("Nevada", 109826, 3),
+            new SizeData("Colorado", 103718, 3),
+        ];
 
 	    this.sizes = this.allSizes;
 
         this.types = [
-            new PlaceType("City", true, 1),
-            new PlaceType("County", true, 2),
+            //new PlaceType("City", true, 1),
+            //new PlaceType("County", true, 2),
             new PlaceType("State", true, 3),
+            new PlaceType("Country", true, 4),
+            new PlaceType("Continent", true, 5),
         ]
     }
 
@@ -39,9 +59,8 @@ export class CompareSizes {
     }
 
     sizeSelected(size: SizeData) {
-        //alert('display size ' + size.areaName);
         if (size.selected) {
-            size.drawnArea = size.area;
+            size.drawnArea = size.area / 10000;
         } else {
             size.drawnArea = 0;
         }
