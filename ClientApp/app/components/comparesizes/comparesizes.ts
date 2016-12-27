@@ -36,7 +36,11 @@ export class CompareSizes {
                 size.shouldShow = type.selected;
             }
         }
-	}
+    }
+
+    sizeSelected(size: SizeData) {
+        alert('display size ' + size.areaName);
+    }
 }
 
 class PlaceType {
@@ -46,9 +50,11 @@ class PlaceType {
 class SizeData {
     constructor(public areaName: string, public area: number, public areaType: number) {
         this.shouldShow = true;
+        this.selected = false;
     }
 
     public shouldShow: boolean;
+    public selected: boolean; 
 }
 
 interface ISizeData {
@@ -56,4 +62,5 @@ interface ISizeData {
     area: number;
     areaType: number;
     shouldShow: boolean;
+    selected: boolean;
 }

@@ -30,13 +30,15 @@ var CompareSizes = (function () {
         ];
     }
     CompareSizes.prototype.typeSelected = function (type) {
-        //alert("hit it with a change");
         for (var _i = 0, _a = this.sizes; _i < _a.length; _i++) {
             var size = _a[_i];
             if (size.areaType === type.id) {
                 size.shouldShow = type.selected;
             }
         }
+    };
+    CompareSizes.prototype.sizeSelected = function (size) {
+        alert('display size ' + size.areaName);
     };
     return CompareSizes;
 }());
@@ -59,6 +61,7 @@ var SizeData = (function () {
         this.area = area;
         this.areaType = areaType;
         this.shouldShow = true;
+        this.selected = false;
     }
     return SizeData;
 }());

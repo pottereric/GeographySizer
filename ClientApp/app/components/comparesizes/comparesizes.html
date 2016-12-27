@@ -10,6 +10,7 @@
     <table if.bind="sizes" class="table">
         <thead>
             <tr>
+                <th>Compare</th>
                 <th>Name</th>
                 <th>Area (sqm)</th>
                 <th>Type</th>
@@ -18,6 +19,12 @@
         <tbody>
             <tr repeat.for="size of sizes">
 		        <template if.bind="size.shouldShow">
+                    <td>
+                        <input type="checkbox"
+                               checked.bind="size.selected"
+                               change.delegate="$parent.sizeSelected(size)"
+                               />
+                    </td>
                 	<td>${ size.areaName }</td>
                 	<td>${ size.area }</td>
                 	<td>${ size.areaType }</td>
@@ -25,4 +32,7 @@
             </tr>
         </tbody>
     </table>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="50" fill="red" />
+    </svg>
 </template>
