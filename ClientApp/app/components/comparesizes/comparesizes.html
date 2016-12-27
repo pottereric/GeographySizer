@@ -1,6 +1,4 @@
 ﻿<template>
-    this is my size comparison page
-
     <div repeat.for="type of types">
         <input type="checkbox" 
                checked.bind="type.selected"
@@ -12,8 +10,7 @@
             <tr>
                 <th>Compare</th>
                 <th>Name</th>
-                <th>Area (sqm)</th>
-                <th>Type</th>
+                <th>Area (sq. mi)</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +24,6 @@
                     </td>
                 	<td>${ size.areaName }</td>
                 	<td>${ size.area }</td>
-                	<td>${ size.areaType }</td>
 		        </template>
             </tr>
         </tbody>
